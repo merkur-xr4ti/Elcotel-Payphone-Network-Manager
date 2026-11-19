@@ -1,0 +1,27 @@
+[package]
+name = "payphone-manager"
+version = "1.0.0"
+edition = "2021"
+description = "Payphone network management for Elcotel Series 5 payphones: records, service, accounting and remote calls over a modem or SIP"
+readme = "README.md"
+keywords = ["payphone", "elcotel", "pnm", "modem", "sip"]
+categories = ["gui"]
+
+[[bin]]
+name = "payphone-manager"
+path = "src/main.rs"
+
+[dependencies]
+eframe = "0.31"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = "0.4"
+image = { version = "0.25", default-features = false, features = ["png"] }
+serialport = { version = "4", default-features = false }
+md5 = "0.7"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+winit = "0.30"
+
+[profile.release]
+opt-level = 2
